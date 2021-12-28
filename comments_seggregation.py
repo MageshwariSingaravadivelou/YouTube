@@ -1,4 +1,3 @@
-# DEVELOPER_KEY = "AIzaSyBOVKDx52ojkOqLkn7E8KsLkrSw-ZieKwc"
 import os
 import pandas as pd
 import googleapiclient.discovery
@@ -7,7 +6,7 @@ videoIds= ["v73TaVDWh4s", "0-TEzySiNv8", "ATIVwXhTXHg", "--CIF7dIVl8", "LTbmEA0n
 
 api_service_name = "youtube"
 api_version = "v3"
-DEVELOPER_KEY = "AIzaSyBM16YUknYgpcsp1JgFWdaY9S73Mxzefdc"
+DEVELOPER_KEY = "YOUR DEVELOPER KEY"
 
 def pagination(video_id, nextPage = None):
     youtube = googleapiclient.discovery.build(
@@ -50,7 +49,7 @@ def main():
                     main_comments.append(each["snippet"]["topLevelComment"]["snippet"]["textDisplay"])
                 break
     main_df = pd.DataFrame(main_comments)
-    main_df.to_csv(r"C:/Users/v-msingarava/Desktop/edge_features_comments.csv", index=False)
+    main_df.to_csv(r"features_comments.csv", index=False)
 
 if __name__ == "__main__":
     main()
