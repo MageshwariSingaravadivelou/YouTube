@@ -1,4 +1,3 @@
-# DEVELOPER_KEY = "AIzaSyBOVKDx52ojkOqLkn7E8KsLkrSw-ZieKwc"
 import os
 import pandas as pd
 import googleapiclient.discovery
@@ -7,7 +6,7 @@ videoIds= ["v73TaVDWh4s", "0-TEzySiNv8", "ATIVwXhTXHg", "--CIF7dIVl8", "LTbmEA0n
 
 api_service_name = "youtube"
 api_version = "v3"
-DEVELOPER_KEY = "AIzaSyBM16YUknYgpcsp1JgFWdaY9S73Mxzefdc"
+DEVELOPER_KEY = "YOUR DEVELOPER KEY" 
 
 def pagination(video_id, nextPage = None):
     youtube = googleapiclient.discovery.build(
@@ -41,13 +40,13 @@ def main():
         while True:
             df = pd.DataFrame(response["items"])
             main_df = main_df.append(df)
-            main_df.to_csv(r"C:/Users/v-msingarava/Desktop/ytb_comments.csv", index=False)
+            main_df.to_csv(r"ytb_comments.csv", index=False)
             try:
                 print(response["nextPageToken"])
                 response = pagination(video_id=each, nextPage=response["nextPageToken"])
             except KeyError:
                 main_df = main_df.append(pd.DataFrame(response["items"]))
-                main_df.to_csv(r"C:/Users/v-msingarava/Desktop/ytb_comments.csv", index=False)
+                main_df.to_csv(r"ytb_comments.csv", index=False)
                 break
     
 
